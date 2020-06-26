@@ -1,14 +1,84 @@
-{% extends "base.html" %}
-{% import 'bootstrap/wtf.html' as wtf %}
+<!-- RECENT STATUS HTML FOR PAGE 2 -->
+<!doctype html>
+<html lang="en">
 
-{% block title %}Plant Journey - Matching plants {% endblock %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
 
-{% block content %}
-<body class="">
 
-	<h1>Find the plant that suits you!</h1>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Icons: -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Google Font: -->
+      <!-- <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/match.css') }}">
 
-<!-- scripts -->
+
+
+    <title>Plant Journey</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default fixed-top">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+      
+            <!-- Das ist das Hamburgermenü: -->
+             <!-- # bezieht sich auf die id des normalen Menüs und so werden die dort aufgeführten Menüpunkte im Hamburgermenü als dropdown angezeigt: -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <!-- innerhalb des Buttons sind diese drei spans:
+              Jede span stellt einen kleinen grauen Strich dar -->
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=#><img href="/PLANTJOURNEY_LOGO_FINAL_JPG-12.jpg"></a>
+            <a href="{{ url_for('main.index') }}" class="navbar-brand">PLANT JOURNEY</a>
+          </div>
+      
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">About</a></li>
+              <li><a href="#">How It Works</a></li>
+              <li><a href="#">Start Now</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+   <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" id="picture">
+                <h4>Upload a picture here</h4>
+                <span class="glyphicon glyphicon-camera"></span>
+                <p><a class="btn btn-default btn-lg pull-right" href="#" role="button"><span class="btn-text">Match now</span></a></p>
+        </div>
+        <div class="col-md-6" id="match">
+            <h4>Find your perfect match</h4>
+            <p><a class="btn btn-default btn-lg pull-right" href="#" role="button"><span class="btn-text">Match now</span></a></p>
+        </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 </body>
-{% endblock %}
+
+</html>
+

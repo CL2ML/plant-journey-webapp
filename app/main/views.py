@@ -12,6 +12,3 @@ def match():
     return render_template('match.html')
 
 
-@main.route('/recognition')
-def recognition():
-    return render_template('recognition.html')
