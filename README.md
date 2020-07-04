@@ -21,3 +21,5 @@ Using the Flask Framework for the Backend.
 [startbootstrap-landing-page](https://github.com/BlackrockDigital/startbootstrap-landing-page): Bootstrap Website Template
 
 [realpython.com/flask-by-example-part-2-postgres-sqlalchemy-and-alembic](https://realpython.com/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/): Postgres Database for Flask
+
+[techwithtim.net/tutorials/flask/sessions](https://techwithtim.net/tutorials/flask/sessions/): Use session data to move variable content via redirect
