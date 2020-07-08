@@ -6,29 +6,19 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
 
-
-
     <!-- Bootstrap CSS -->
     <!-- Latest compiled and minified CSS -->
-    
-    <!-- 
+    <!-- 3: -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <!-- 4: -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    -->
-
-    <!--  -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
-   
-   
     <!-- Icons: -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Google Font: -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
-    
-    <!-- Flask/Jinja specific command to get the css style-->  
-    <!-- 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/match.css') }}">
-    --> 
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+      
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/match.css') }}">
+
     <title>Plant Journey</title>
 </head>
 
@@ -36,83 +26,69 @@
 
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png') }}" width="124" height="70" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       
-            <!-- Das ist das Hamburgermenü: -->
-             <!-- # bezieht sich auf die id des normalen Menüs und so werden die dort aufgeführten Menüpunkte im Hamburgermenü als dropdown angezeigt: -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <!-- innerhalb des Buttons sind diese drei spans:
-              Jede span stellt einen kleinen grauen Strich dar -->
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!-- Flask/Jinja command to get the logo -->
-            <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png') }}" width="124" height="70" alt=""></a>
-          </div>
-      
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">About</a></li>
-              <li><a href="#">How It Works</a></li>
-              <li><a href="#">Start Now</a></li>
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">How It Works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Start Now</a>
+              </li>
+          </ul>
         </div>
       </nav>
+    <section class="container-fluid px-0">
+        <div class="row border justify-content-center align-items-center">
 
-   <div class="container-fluid">
-    <div class="row display-table">
-        <div class="col-md-6" id="picture">
-          <!-- <img src="/Users/sarah/Desktop/TechLabs/Project_idea/Code/placeholder_upload.jpg" id="placeholder"> -->
-          <h1 class="center-block">Upload a picture of a plant</h1>
-          <p id="TextPic">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            <div class="col-sm-6 m-0">
+                    <h1 class="text-center" id="FitPlant">Would you like to know if the plant fits you?</h1>
+                    <h2 class="Subtext text-center" id="FitPlantSub"><p>Upload a picture of a plant and we will tell you all about it.</p><p>If you’re still not sure, if its the right plant for you, just answer three quick questions about yourself to find out.</p></h2>
 
+                    <div class="jumbotron" id="JumboPic">
 
- <p><button type="button" class="btn btn-default pull-right" href="#" role="button" id="camera"><span class="glyphicon glyphicon-camera pull-right"></span></button></p>
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" id="plus">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+                          </svg>
 
-              <div class="jumbotron center-block" id="jumboPic">
-                <!-- Test file upload bs 4 -->
-                <form action="/match" method="POST" enctype="multipart/form-data">
+                          <h1 id="add">Add your picture</h1>
 
-                        <div class="form-group">            
-                            <input type="file" class="custom-file-input" name="image" id="image">
-                            <label class="custom-file-label" for="image">Add your picture...</label>
-                          
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Match Now</button>
-
-                </form>
-               </div>
-                               
-               
-                
-
-        </div>
-          <div class="col-md-6" id="match">
-            <div class="jumbotron center-block" id="jumboMatch">
-              <h4>Find your perfect plant by defining your living situation.</h4>
-              <a class="btn btn-default btn-lg center-block" href="#" role="button"><span class="btn-text align-middle">Match now</span></a>
+                            <h3>Take a photo now or</h3>
+                            <button type="button" class="btn btn-default pull-right" href="#" role="button" id="camera">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-camera-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path fill-rule="evenodd" d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                </svg>
+                            </button>
+                        <form action="/match" method="POST" enctype="multipart/form-data">
+                            <label>
+                                <h3>or <u>choose from library</u></h3><input type="file" name="image" hidden id="plus">
+                            </label>
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill">Recognize</button>
+                        </form>
+                    </div>
             </div>
-          </div>
-      </div>
-    </div>
+
+            <div class="col-sm-6 m-0" id="Match">
+                <div class="jumbotron img-fluid" id="JumboMatch">
+                    <h1 class="display-4 text-center">Are you looking for the perfect plant?</h1>
+                    <h2 class="Subtext text-center">Just answer <b>three quick questions</b> about yourself to find the plant that fits you perfectly.</p>
+                    <a class="btn btn-primary btn-lg rounded-pill" href="#" role="button">Match now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-      <!-- Recognition results --> 
-      <div class="container-fluid">
-        <p>Your plant as been recognized as: {{ recognition_result }}</p>
 
-      </div>
-
-    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -121,7 +97,23 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-   
-</body>
 
+        <script src="js/file-upload.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.file-upload').file_upload();
+    });
+</script>
+
+<script>
+    $(function () {
+      $(document).scroll(function(){
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+ </script>
+
+
+</body>
 </html>

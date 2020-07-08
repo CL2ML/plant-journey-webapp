@@ -1,81 +1,94 @@
-html{
+body{
+    font-family: Lato;
     min-height: 100%;
-    position:relative;
 }
 
-body{
-    position: relative;
-    min-height: 100%;
-    font-family: Lato;
-    font-weight: 400;
-    text-align: center;
-    color: #000000;
-    width: 100%;
+html{
     height: 100%;
-    padding-top: 70px;
 }
 
 .navbar{
-    background: white;
-    border-color:transparent;
-    color:black;
+    background-color: #ffffff;
 }
 
-.navbar-brand{
-    padding-top: 0;
-    padding-bottom: 60px;
-}
-
-#container{
-    
-}
-
-.row{
-    /* height: 1000px; */
-    /* position: absolute; 
-    /*position: relative;*/
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-    /*overflow:hidden;*/
-    z-index:-1;
-}
-
-
-.row.display-table{
-    display: table;
-}
-
-.row.display-table [class*='col-'] {
-    float: none;
-    display: table-cell;
-}
-
-.col-md-6{
-    padding-right: 0;
-    padding-left: 0;
-}
-
-h4{
-    font-style: normal;
-    font-size: 16px;
-    line-height: 40px;
-    top: 19px;
+#mainNavbar .nav-link{
+    color: black;
     font-weight: 400;
-    line-height: 25px;
-    margin-bottom: 30px;
-    margin-left: 0px;
+    font-size: 20px;
+    line-height: 24px;
 }
 
-#TextPic{
-    width: 72%;
-    margin-left: 14%;
-    margin-right: 14%;
-    margin-bottom: 2%;
-    margin-top: 2%;
+#mainNavbar .nav-link:hover{
+    color: #989c98;
 }
 
+.col{
+    padding-right: 148px;
+}
+
+#Match{
+    background: url('/static(Pic_Match.jpg');
+    /* background-color: #00352B; */
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-primary{
+    background: #00352B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 59px;
+    width: 170px;
+    height: 50px;
+    /* left: 48px;
+    top: 144px; */
+    font-size: 20px;
+    /* line-height: 27px; */
+    color: #F2E8DD;
+    border: none;
+    padding-top: 13.12px;
+    padding-bottom: 13.12px;
+    padding-left: 22.03px;
+    padding-right: 22.03px;
+    align-items: center;
+    text-align: center; 
+}
+
+.btn:hover{
+    background-color: #989c98;
+}
+
+.jumbotron{
+    width: 50%;
+    height: 260px;
+    padding-top: 12px;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#JumboMatch{
+    background: rgba(255, 254, 254, 0.85);
+}
+
+#JumboPic{
+    background: none;
+    border: 2px solid #00352B;
+}
+
+#add{
+    margin-left: 0;
+    margin-bottom: 8.12px;
+
+}
+
+h3{
+    font-size: 14px;
+    line-height: 18px;
+    color: #706D6D;
+    text-align: center;
+    margin-top: 3px;
+}
 
 #camera{
     background: transparent;
@@ -86,12 +99,15 @@ h4{
     border: none;
     width: 63px;
     height: 63px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 129px;
+    margin-right: 129px;
 }
-
 
 #plus{
     font-size: 63px;
-    color: #CD8E6E;
+    color: #A66653;
     background: transparent;
     border: none;
     box-shadow: none;
@@ -100,73 +116,45 @@ h4{
     margin-right: 0px;
 }
 
-/* #btn-plus{
-    position: absolute;
-    background: #CD8E6E;
-    width: 54.45px;
-    height: 54.45px;
-    margin-left: 11px;
-    margin-top: 11px;
-    margin-right: 0;  
-    box-shadow: none; 
-    font-size: 70px;
-    color: #F2E8DD;
-    align: center;
-} */
+.btn-default{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 129px;
+    margin-right: 129px;
+}
 
-/* #placeholder */
 h1{
-    width: 72%;
-    margin-left: 14%;
-    margin-right: 14%;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    padding-top: 5%;
+    font-style: normal;
     font-weight: 400;
-    font-size: 48px;
-    line-height: 60px;
-}
-
-#match{
-    background-image: url('/static/images/Pic_Match.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-#jumboPic{
-    background: white;
-    border: 2px solid #00352B;
-    width: 311px;
-    height: 222px;
-    left: 120px;
-    top: 381px;
-    margin-top: 12%;
-    padding: 6px;
-}
-
-#jumboMatch{
-    background: rgba(255, 254, 254, 0.85);
-    /* border: 2px solid #00352B; */
-    width: 311px;
-    height: 222px;
-    left: 154px;
-    top: 128px;
-    padding: 6px;
-    margin-top: 20px;
-}
-
-
-.btn{
-    background: #00352B;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 59px;
-    width: 214.31px;
-    height: 62.56px;
-    left: 48px;
-    top: 144px;
     font-size: 20px;
-    line-height: 27px;
-    /* display: flex; */
-    align-items: center;
-    color: #F2E8DD;
+    line-height: 24px;
+    color: #00352B;
+    text-align: center;
+}
+
+.display-4{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    /* text-align: center; */
+    margin-bottom: 17px;
+}
+
+.Subtext{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+#FitPlant{
+    margin-right: 17.5%;
+    margin-left: 17.5%;
+    margin-top: 5%;
+    width: 65%;
+}
+
+#FitPlantSub{
+    margin-right: 17.5%;
+    margin-left: 17.5%;
+    width: 65%;
 }
