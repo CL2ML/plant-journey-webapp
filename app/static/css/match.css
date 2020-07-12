@@ -27,7 +27,7 @@ html{
 }
 
 #Match{
-    background: url('/static(Pic_Match.jpg');
+    background: url(/static/Pic_Match.jpg);
     /* background-color: #00352B; */
     background-size: cover;
     background-position: center;

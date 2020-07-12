@@ -17,7 +17,11 @@ def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
-  
+
+    # Add upload security 
+    #app.config.from_object(config["ALLOWED_IMAGE_EXTENSIONS"])
+    #app.config.from_object(config["MAX_IMAGE_FILESIZE"])
+      
     #bootstrap.init_app(app)
     db.init_app(app)
 
