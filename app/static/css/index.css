@@ -7,9 +7,9 @@ body{
 }*/
 
 #header {
-          background: url("static/images/PlantJourny home bg.png") center center / cover no-repeat;
-            padding-top: 248px;
-padding-left: 132px;
+          background: url(/static/images/PlantJourneyhomebg.png) center center / cover no-repeat;
+          padding-top: 248px;
+          padding-left: 132px;
       }
 
 #mainNavbar .nav-link{

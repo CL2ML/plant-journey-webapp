@@ -33,7 +33,7 @@ def allowed_image_filesize(filesize):
 	else:
 		return False
 
-#TODO: define function to retrieve db data
+# define function to retrieve db data
 def get_db_data(rec_plant_name):
 	plant_info = Plantspecs.query.filter_by(botanical_name=rec_plant_name).first_or_404()
 	return plant_info.to_json()
@@ -129,3 +129,7 @@ def results():
 	else:
 		return redirect(url_for("main.match"))
 
+# match overlay
+
+
+# match results
