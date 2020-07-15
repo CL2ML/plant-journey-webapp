@@ -93,7 +93,7 @@ def match():
 						session['plant_info'] = get_db_data(recognized_plant_name)
 						print('Plant data from db: ', session['plant_info'])
 
-						return redirect(url_for('main.recognition'))
+						return redirect(url_for('main.results'))
 
 				else:
 					print("That file extension is not allowed")
@@ -106,14 +106,26 @@ def match():
 	return render_template('match.html')
 
 
-@main.route('/recognition')
-def recognition():
+# @main.route('/recognition')
+# def recognition():
+# 	if "recognized_plant" in session:
+# 		recognized_plant = session["recognized_plant"]
+# 		plant_info = session['plant_info']
+# 		print('Session data:', recognized_plant)
+
+# 		return render_template('recognition.html', recognized_plant=recognized_plant, plant_info=plant_info)
+# 	else:
+# 		return redirect(url_for("main.match"))
+
+
+@main.route('/results')
+def results():
 	if "recognized_plant" in session:
 		recognized_plant = session["recognized_plant"]
 		plant_info = session['plant_info']
 		print('Session data:', recognized_plant)
 
-		return render_template('recognition.html', recognized_plant=recognized_plant, plant_info=plant_info)
+		return render_template('results.html', recognized_plant=recognized_plant, plant_info=plant_info)
 	else:
 		return redirect(url_for("main.match"))
 
