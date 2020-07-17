@@ -8,15 +8,19 @@ import os
 
 from . import main
 from .. import db # Imports via the init file
-from ..models import Plantspecs
+from ..models import Plantspecs, PlantSchema
 
+# Init the marshmallow serialization schema
+plant_schema = PlantSchema()
+plants_schema = PlantSchema(many=True)
 
+# Route: Page 1 - Landing Page  ---------------------------------------------#
 @main.route('/')
 def index():
 	return render_template('index.html')
 
 
-# Route: Page 2 ---------------------------------------------#
+# Route: Page 2 - Matching options ---------------------------------------------#
 def allowed_image(filename):
 	if not "." in filename:
 		return False
@@ -34,9 +38,10 @@ def allowed_image_filesize(filesize):
 		return False
 
 # define function to retrieve db data
-def get_db_data(rec_plant_name):
+def get_db_recognized_plant(rec_plant_name):
 	plant_info = Plantspecs.query.filter_by(botanical_name=rec_plant_name).first_or_404()
-	return plant_info.to_json()
+	result = plant_schema.dump(plant_info)
+	return result
 
 
 @main.route('/match', methods=['GET', 'POST'])
@@ -90,10 +95,10 @@ def match():
 						# TODO: Get matching plant from database
 						recognized_plant_name = session["recognized_plant"]['plant_class']
 						print('Recognized plant name: ', recognized_plant_name)
-						session['plant_info'] = get_db_data(recognized_plant_name)
+						session['plant_info'] = get_db_recognized_plant(recognized_plant_name)
 						print('Plant data from db: ', session['plant_info'])
 
-						return redirect(url_for('main.results'))
+						return redirect(url_for('main.recognition'))
 
 				else:
 					print("That file extension is not allowed")
@@ -106,30 +111,60 @@ def match():
 	return render_template('match.html')
 
 
-# @main.route('/recognition')
-# def recognition():
-# 	if "recognized_plant" in session:
-# 		recognized_plant = session["recognized_plant"]
-# 		plant_info = session['plant_info']
-# 		print('Session data:', recognized_plant)
-
-# 		return render_template('recognition.html', recognized_plant=recognized_plant, plant_info=plant_info)
-# 	else:
-# 		return redirect(url_for("main.match"))
-
-
-@main.route('/results')
-def results():
+# Route: Page 3 - Recognition results ---------------------------------------------#
+@main.route('/recognition')
+def recognition():
 	if "recognized_plant" in session:
-		recognized_plant = session["recognized_plant"]
-		plant_info = session['plant_info']
-		print('Session data:', recognized_plant)
 
-		return render_template('results.html', recognized_plant=recognized_plant, plant_info=plant_info)
+		recognized_plant = session["recognized_plant"]
+		print('Session data - recognized_plant:', recognized_plant)
+
+		plant_info = session['plant_info']
+		print('Session data - plant_info:', plant_info)	
+
+		return render_template('recognition.html', recognized_plant=recognized_plant, plant_info=plant_info)
 	else:
 		return redirect(url_for("main.match"))
 
-# match overlay
+
+# Route: Page 4 - Matching filter ---------------------------------------------#
+@main.route('/filter-plants', methods=['GET','POST'])
+def filter_plants():
+	# Receives user data from the html form
+	if request.method == "POST":
+		session.permanent = True
+
+		session['light_options'] = request.form.get('light_options')
+		print('Session data - light_options:', request.form.get('light_options'))
+		
+		session['water_req'] = request.form.get('water_req')
+		print('Session data - water_req:', request.form.get('water_req'))
+
+		session['toxic'] = request.form.get('toxic')
+		print('Session data - toxic:', request.form.get('toxic'))
+
+		return redirect(url_for('main.match_results'))
+	
+	return render_template('filter_plants.html')
 
 
-# match results
+# Route: Page 5 - Matching filter results---------------------------------------------#
+# define function to retrieve db data
+
+
+def get_db_plant_filter(light_options):
+	plant_list = Plantspecs.query.filter_by(sunlight_need=light_options).all()
+	results = plants_schema.dump(plant_list)
+	return results
+
+@main.route('/match-results')
+def match_results():
+	# Assign options
+	light_options = session['light_options']
+	water_req = session['water_req']
+	toxic = session['toxic']
+	# DB query
+	filtered_plants = get_db_plant_filter(light_options)
+	print(filtered_plants)
+	
+	return render_template('match_results.html', filtered_plants=filtered_plants, light_options=light_options, water_req=water_req, toxic=toxic)

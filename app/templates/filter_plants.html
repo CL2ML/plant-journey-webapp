@@ -1,0 +1,170 @@
+<!-- RECENT STATUS OF PAGE 2 -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- 3: -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <!-- 4: -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Icons: -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Google Font: -->
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+      
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/filter.css') }}">
+
+    <title>Plant Journey</title>
+</head>
+
+
+
+<body>
+
+    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg navbar-fixed-top">
+        <a class="navbar-brand" href="#"><img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">How It Works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Start Now</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+    <section class="container-fluid d-flex flex-column px-0">
+        <div class="row justify-content-center align-items-center display:flex py-0 px-0 m-0">
+
+            <div class="col-sm-6 py-0 px-0" id="Filter">
+                    <div class="jumbotron py-0 px-0" id="FilterOptions">
+
+                          <h1 class="OptionsText">How much sunlight do you have in the room?</h1>
+                    <form action="" method="post">
+                    <div class="form-group>">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-3 same">
+                                    <div class="custom-control custom-radio image-checkbox">
+                                        <input type="radio" class="custom-control-input" id="LightOption1" name="light_options" value="high">
+                                        <label class="custom-control-label" for="LightOption1">
+                                            <img src="static/images/BrightSunlight.jpg" class="img-fluid">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 same">
+                                    <div class="custom-control custom-radio image-checkbox">
+                                        <input type="radio" class="custom-control-input" id="LightOption2" name="light_options" value="medium">
+                                        <label for="LightOption2">
+                                            <img src="static/images/LittleLight.jpg" class="img-fluid">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-3">
+                                    <div class="custom-control custom-radio image-checkbox">
+                                        <input type="radio" class="custom-control-input" id="LightOption3" name="light_options" value="low">
+                                        <label for="LightOption3">
+                                            <img src="static/images/Shadow.jpg" class="img-fluid">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                          <h1 class="OptionsText">How often do you have time to water the plant?</h1>
+
+                          <select class="custom-select selectWater" name="water_req">
+                            <option value="daily">Daily</option>
+                            <option value="twice a week">Twice a week</option>
+                            <option value="once a week">Once a week</option>
+                            <option value="every other week">Every other week</option>
+                          </select>
+
+                          <h1 class="OptionsText">Do you have pets or kids younger than 5 years?</h1>
+ 
+                        <div class="container">
+                            <div class="btn-group" data-toggle="buttons">
+
+                                <label class="btn btn-primary btn-lg rounded-pill form-check-label">
+                                    <input class="form-check-input" type="radio" autocomplete="off" name="toxic" value="no"> No
+                                </label>
+                      
+                                
+                                <label class="btn btn-primary btn-lg rounded-pill form-check-label" aria-haspopup="true" aria-expanded="false">
+                                    <input class="form-check-input" type="radio" autocomplete="off" name="toxic" value="yes">Yes
+                                </label>
+                                <ul class="dropdown-menu">
+                                    <option value="daily">Daily</option>
+                                    <option value="twice a week">Twice a week</option>
+                                    <option value="once a week">Once a week</option>
+                                  </ul>
+                                <!-- 
+                                  <select class="custom-select selectWater" name="toxic_types_2">
+                                    <option value="kids">Kids</option>
+                                    <option value="dogs">Dogs</option>
+                                    <option value="cats">Cats</option>
+                                  </select> -->
+                            </div>
+                        </div>
+                          <button type="submit" class="btn btn-primary btn-lg rounded-pill" id="MatchNow">Match now</button>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+
+
+            <div class="col-sm-6" id="Match">
+                <div class="jumbotron" id="JumboMatch">
+                    <h1 class="text-center">Are you looking for the perfect plant?</h1>
+                    <h2 class="Subtext text-center">Just answer <b>three quick questions</b> about yourself to find the plant that fits you perfectly.</p>
+                    <a class="btn btn-primary btn-lg rounded-pill" href="#" role="button" id="MatchNow">Match now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+        <script src="js/file-upload.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.file-upload').file_upload();
+    });
+</script>
+
+<script>
+    $(function () {
+      $(document).scroll(function(){
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+ </script>
+
+
+</body>
+</html>

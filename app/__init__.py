@@ -1,17 +1,18 @@
 """
 This is the central file that serves as the Handler for the app (Factory Pattern)
 
-Bootstrap is deactivated as custom Bootstrape resources are used by the html files so far.
+Bootstrap is not invoked as custom Bootstrap resources are used by the html files so far.
 """
 
 from flask import Flask
-#from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from config import config
 from datetime import timedelta
+from flask_marshmallow import Marshmallow
 
-#bootstrap = Bootstrap()
+
 db = SQLAlchemy()
+ma = Marshmallow()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -24,6 +25,7 @@ def create_app(config_name):
       
     #bootstrap.init_app(app)
     db.init_app(app)
+    ma.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

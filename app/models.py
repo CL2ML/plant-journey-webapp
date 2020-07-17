@@ -1,5 +1,6 @@
-from . import db
+from . import db, ma
 from datetime import datetime
+from sqlalchemy import inspect
 
 class Plantspecs(db.Model):
 	__tablename__ = 'plant_specs'
@@ -7,48 +8,62 @@ class Plantspecs(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	botanical_name = db.Column(db.String(100), index=True, unique=True)  
 	common_name = db.Column(db.String(100), index=True, unique=True)
-	light_requirements = db.Column(db.String(50))
-	water_requirements  = db.Column(db.String(50))
-	additional_characteristics = db.Column(db.String())
-	blossom_color = db.Column(db.String(50)) 
-	best_time_to_plant = db.Column(db.String(50)) 
-	fragrance = db.Column(db.String(25))
-	mature_size = db.Column(db.String(25))
-	fertilizing_need = db.Column(db.String(355))
-	air_humidity = db.Column(db.String(50))
+	climate_origin = db.Column(db.String(50))
+	sunlight_need = db.Column(db.String(50))
 	direct_sunlight = db.Column(db.Boolean())
-	at_window = db.Column(db.Boolean()) 
-	avg_temperature = db.Column(db.String(25)) 
+	water_need = db.Column(db.String(50))
+	watering_frequency = db.Column(db.String(50))
 	toxic = db.Column(db.Boolean())  
+	children = db.Column(db.Boolean()) 
 	cats = db.Column(db.Boolean())  
 	dogs = db.Column(db.Boolean())  
-	children = db.Column(db.Boolean())  
-	climate_origin = db.Column(db.String(50))  
-	re_potting_need = db.Column(db.String(100))
+	blossom_color = db.Column(db.String(50)) 
+	fragrance = db.Column(db.String(25))
+	best_time_to_plant = db.Column(db.String(50)) 
+	size_metric = db.Column(db.String(25))
+	mature_size = db.Column(db.String(25))
+	repotting_need = db.Column(db.String(100))
+	fertilizing_need = db.Column(db.String(355))
+	air_humidity = db.Column(db.String(50))
+	at_window = db.Column(db.Boolean()) 
+	avg_temperature = db.Column(db.String(25)) 
+	additional_information = db.Column(db.String())
+	experience_need = db.Column(db.String(25)) 
 	#created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
-	def to_json(self):
-		json_plantspecs = {
-			'botanical_name': self.botanical_name,
-			'common_name': self.common_name,
-			'light_requirements': self.light_requirements,
-			'water_requirements': self.water_requirements,
-			'light_requirements': self.light_requirements,
-			'additional_characteristics': self.additional_characteristics,
-			'best_time_to_plant': self.best_time_to_plant,
-			'fragrance': self.fragrance,
-			'mature_size': self.mature_size,
-			'direct_sunlight': self.direct_sunlight,
-			'at_window': self.at_window,
-			'at_window': self.at_window,
-			'toxic': self.toxic,
-			'cats': self.cats,
-			'dogs': self.dogs,
-			'dogs': self.dogs,
-			'children': self.children
-		}
-		return json_plantspecs
+	# Optional solution to return the data as a dict
+	def toDict(self):
+		return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }
 
 	# Data representation for debugging
 	def __repr__(self):
 		return '<Plantspecs {}>'.format(self.botanical_name)   
+
+# Marshmallow schema to return the data
+class PlantSchema(ma.Schema):
+    class Meta:
+        fields = (
+			'botanical_name', 
+			'common_name', 
+			'climate_origin', 
+			'sunlight_need', 
+			'direct_sunlight', 
+			'water_need', 
+			'watering_frequency', 
+			'toxic', 
+			'children', 
+			'cats', 
+			'dogs', 
+			'blossom_color', 
+			'fragrance', 
+			'best_time_to_plant', 
+			'size_metric', 
+			'mature_size', 
+			'repotting_need',
+			'air_humidity',
+			'at_window',
+			'avg_temperature',
+			'additional_information',
+			'experience_need'
+			)
+
