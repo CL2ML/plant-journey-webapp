@@ -5,7 +5,6 @@ from werkzeug.utils import secure_filename
 import requests
 import json
 import os
-from sqlalchemy import and_, or_
 
 from . import main
 from .. import db # Imports via the init file
@@ -153,9 +152,8 @@ def filter_plants():
 # define function to retrieve db data
 
 
-def get_db_plant_filter(light_options, water_req, toxic):
-	print('Toxic?', bool(toxic))
-	plant_list = Plantspecs.query.filter(and_(Plantspecs.sunlight_need.like(light_options), Plantspecs.watering_frequency.like(water_req), Plantspecs.toxic.is_(bool(toxic)))).all()
+def get_db_plant_filter(light_options):
+	plant_list = Plantspecs.query.filter_by(sunlight_need=light_options).all()
 	results = plants_schema.dump(plant_list)
 	return results
 
@@ -166,7 +164,7 @@ def match_results():
 	water_req = session['water_req']
 	toxic = session['toxic']
 	# DB query
-	filtered_plants = get_db_plant_filter(light_options, water_req, toxic)
+	filtered_plants = get_db_plant_filter(light_options)
 	print(filtered_plants)
 	
-	return render_template('match_results.html', filtered_plants=filtered_plants, light_options=light_options, watering_frequency=water_req, toxic=toxic)
+	return render_template('match_results.html', filtered_plants=filtered_plants, light_options=light_options, water_req=water_req, toxic=toxic)
