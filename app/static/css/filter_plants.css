@@ -1,0 +1,226 @@
+body{
+    font-family: Lato;
+}
+
+.navbar{
+    background-color: transparent;
+}
+
+#mainNavbar .nav-link{
+    color: #00352B;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+#mainNavbar .nav-link:hover{
+    border-bottom: 2px solid #CD8E6E;
+    border-radius: 2px;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    transition: background 500ms;
+}
+
+#Filter{
+    background: #A66653;
+    background-size: cover;
+    height: 1000px;
+}
+
+#Match{
+    background: url(../images/Pic_Match.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 1000px;
+}
+
+.img-fluid{
+    border: 2px solid #CD8E6E;
+    border-radius: 26px;
+    width: 150px;
+    height: 118.64px;
+}
+
+input[type="radio"]:checked + label {
+    border: 5px solid #CD8E6E;
+    border-radius: 31px;
+}
+
+.same{
+    margin-right: 25px;
+}
+
+#first{
+    margin-left: 5.58%;
+}
+
+.selectWater{
+    background: #CD8E6E;
+    border: 2px solid #CD8E6E;
+    border-radius: 26px;
+    width: 200px;
+    backdrop-filter: blur(10px);
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #F2E8DD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-left: 5.58%;
+}
+
+.toxic{
+    margin-left: 5.58%;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active{
+    background-color: #989c98;
+}
+
+.toxic-yes{
+    Width: 110px;
+    height: 36px;
+    background: none;
+    border: 2px solid #CD8E6E;
+    border-radius: 26px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    color: #F2E8DD;
+    padding-top: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.toxic-no{
+    Width: 110px;
+    height: 36px;
+    background: #CD8E6E;
+    border: 2px solid #CD8E6E;
+    border-radius: 26px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+    text-align: center;
+    color: #F2E8DD;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#Yes{
+    Width: 110px;
+    height: 36px;
+    background: #F2E8DD;
+    border: 2px solid #F2E8DD;
+    border-radius: 26px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    color: #CD8E6E;
+    border: none;
+    text-align: center;
+    padding-top: 2.5px;
+}
+
+.btn-primary{
+    background: #00352B;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 59px;
+    width: 170px;
+    height: 50px;
+    font-size: 20px;
+    color: #F2E8DD;
+    border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
+    background-color: #989c98;
+}
+
+#submit{
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.jumbotron{
+    border-radius: 26px;
+}
+
+#JumboMatch{
+    background: rgba(255, 254, 254, 0.85);
+    margin-top: 58%;
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 350px;
+    padding-top: 12px;
+    padding-left: 17px;
+    padding-right: 17px;
+    height: 300px;
+}
+
+#FilterOptions{
+    background: none;
+    border: 1px solid #F2E8DD;
+    width: 89.06%;
+    height: 90%;
+    margin-top: 70px;
+    margin-bottom: 3.71%;
+    margin-left: 5.38%;
+    margin-right: 5.38%;
+    text-align: left;
+}
+
+h1{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    color: #00352B;
+    margin-top: 5%;
+    margin-left: 20.67%;
+    margin-right: 10.67%
+}
+
+#MatchNow{
+    background: #864C3B;
+    margin-left: 33%;
+    margin-right: 33%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.OptionsText{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    color: #F2E8DD;
+    text-align: left;
+    margin-left: 5.58%;
+    margin-right: 5.65%;
+    margin-top: 45px;
+    margin-bottom: 28px;
+}
+
+.questions-toxic{
+    margin-bottom: 3%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.Subtext{
+    font-size: 14px;
+    line-height: 25px;
+}
+
+@media (max-width: 1200px){
+    #FilterOptions {
+        height: 100%;
+    }
+}

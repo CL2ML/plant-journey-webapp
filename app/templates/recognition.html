@@ -1,102 +1,262 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="{{ url_for('static', filename='js/results_page.js') }}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/results_page.css') }}">
-        
-        <title>Plant Journey</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+      
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="static/js/recognition.js"></script>
+      <link rel="stylesheet" type="text/css" href="static/css/recognition.css">
+     
+    <title>Plant Journey</title>
+  </head>
+  <body>
 
-    <body>
+    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
+        <a class="navbar-brand" href="/">
+          <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">How It Works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
 
-    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
-            <a class="navbar-brand" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png') }}" width="124" height="70" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">How It Works</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Start Now</a>
-                </li>
-            </ul>
+    <!-- Main content grid-->
+    <div class="row mx-center">
+        <div class=" white col-xs-6 col-md-3">
+            
+            <p class="ml-5 mt-5 float-center">  <button id="size" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Size</strong></p>
+            <div class="details mb-5 float-center">
+                <p>{{plant_info.size_metric}} I {{plant_info.mature_size}}</p>
+                <p id="sizedetails" style="display: none" class="txt-snippet">
+                    This is a {{plant_info.mature_size}} sized plant. 
+                </p>
             </div>
-        </nav>
+            
+            <p class="ml-5 mt-5 float-center">  <button id="fragrance" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Fragrance</strong></p>
+            <div class="details mb-5 float-center">              
+                <p>{{plant_info.fragrance}}</p>
+                    <p id="fragrancedetails" style="display: none" class="txt-snippet">
+                        {% if plant_info.best_time_to_plant == None %}   
+                        This plant is non-fragrant, which means it can also live in the bedroom.
+                        {% else %}
+                        This plant is fragrant and should therefore live outside of the bedroom. 
+                        {% endif %}
+                    </p>                  
+            </div>
+            
+            <p class="ml-5 mt-5 float-center">  <button id="time" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Best time to plant</strong></p>
+            <div class="details mb-5 float-center" class="txt-snippet">
+                {% if plant_info.best_time_to_plant == None %}   
+                    <p>No information</p>
+                {% else %}
+                    <p>{{ plant_info.best_time_to_plant }}</p>
+                {% endif %}
+                <p id="timedetails" style="display: none">
+                    {% if plant_info.best_time_to_plant == None %} 
+                        We are currently doing more research about this plant.                    
+                    {% else %}
+                        {{plant_info.best_time_to_plant}} is the best time to plant.
+                    {% endif %}              
+                </p>
 
-    <div class="row">
-        <div class=" white col-3">
-    <p class="ml-5 mt-5 float-center">  <button id="size" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Size</strong></p>
-    <div class="details mb-5 float-center">
-    <p>{{plant_info.mature_size}}</p>
-    <p id="sizedetails" style="display: none">Lorem</p>
-    </div>
-    <p class="ml-5 mt-5 float-center">  <button id="fragrence" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Fragrance</strong></p>
-    <div class="details mb-5 float-center">
-    <p>{{plant_info.fragrance}}</p>
-    <p id="fragrencedetails" style="display: none">Lorem</p>
-    </div>
-    <p class="ml-5 mt-5 float-center">  <button id="time" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Best time to plant</strong></p>
-    <div class="details mb-5 float-center">
-    <p{{plant_info.best_time_to_plant}}</p>
-    <p id="timedetails" style="display: none">Lorem</p>
-    </div>
-    </div>
-
-
-
-
-        <div class="col-3 mx-5 my-5">
-        <div>
-            <h1>Snake plant</h1>
-        <p class="subtext">Sansevieria</p>
-        <p class="gray"> The Snake Plant originally comes from Africa. You should make sure it's standing at a place where it gets only medium light. Best is to water the plant once a month, because it does not need much water. The Snake Plant cannot carry blossoms. It's recommended to re-pot the plant yearly in spring.
-        </p>
-
-    <p>
-    <strong style="color: #A66653">Careful:</strong>
-    </p>
-
-    <p class="gray">It can be toxic hor humans, but not for pets.</p>
-        </div>
-        <div class="row">
-        <div class="col-3 my-5"> 
-        <div my-5 mx-5> <img src="skull.png"> </div>
-        </div>
-        <div class="col-3 my-5"> 
-        <div my-5 mx-5> <img src="cloud.png"> </div>
-        </div>
-        <div class="col-3 my-5"> 
-        <div my-5 mx-5> <img src="drops.png"> </div>
-        </div>
-        </div>
-        </div>
+            </div>
         
-        <section class="container-fluid col-4 px-0 mx-0 my-0 py-0">
-        <img src="{{ url_for('static', filename='images/SNAKE PLANT _ PJ _ 2020  copy 1.png') }}" class="img-fluid">
-        <button type="button" id="matchnow" class="btn btn-default btn-md float-right mx-5">Start now </button>
-        </section>
+        </div>
+
+    
+        <div class="col-xs-6 col-md-3 mx-5 my-5">
+
+
+            <!-- Plant details -->
+            <div>
+                <h1><b id="cname"></b></h1>
+                <p class="subtext"><b id="bname"></b></p>
+                <p class="gray"> This plant originally comes from {{plant_info.climate_origin}}. 
+                    You should make sure it's standing at a place where it gets {{plant_info.sunlight_need}} light. 
+                    Best is to water the plant {{plant_info.watering_frequency}}, because its water need is rather {{plant_info.water_need}}. 
+                    {% if plant_info.blossom_color == "no" %}It cannot carry blossoms.
+                    {% else %}It usually carries {{ plant_info.blossom_color }} blossoms.
+                    {% endif %}
+                    It's recommended to re-pot the plant {{ plant_info.repotting_need }}.
+                </p>
+            
+
+                <!--
+                <div>
+                    <h1>Snake plant</h1>
+                <p class="subtext">Sansevieria</p>
+                <p class="gray"> The Snake Plant originally comes from Africa. You should make sure it's standing at a place where it gets only medium light. Best is to water the plant once a month, because it does not need much water. The Snake Plant cannot carry blossoms. It's recommended to re-pot the plant yearly in spring.</p>  
+                -->
+
+                <!-- -->
+                {% if plant_info.toxic == 1 %}
+                    <p><strong style="color: #A66653">Careful</strong></p>
+                    <p class="gray">  
+                    This plant can be toxic for: 
+                        <ul>
+                            {% if plant_info.children == 1 %}
+                                <li class="gray">children</li>
+                            {% endif %}
+                            
+                            {% if plant_info.cats == 1 %}
+                                <li class="gray">cats</li>
+                            {% endif %}
+                            
+                            {% if plant_info.dogs == 1 %}
+                                <li class="gray">dogs</li>
+                            {% endif %}
+                        </ul>
+                    </p>
+                {% endif %}   
+
+            </div>
+            
+            <!-- Icons -->
+            <div class="row">
+                <!-- toxic -->
+                {% if plant_info.toxic == 1 %}    
+                    <div class="col-3 my-5"> 
+                        <div my-5 mx-5> 
+                            <div >
+                                <img class="vector" src="static/images/toxic/POISON _ PJ _ 2020 _ NEW SIZE-07-08-06-01-02.png"> 
+                                <p class="gray small-txt">Toxic</p>  
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-3 my-5"> 
+                        <div my-5 mx-5> 
+                            <div >
+                                <img class="vector" src="static/images/toxic/NOT POISON _ PJ _ 2020 _ NEW SIZE-07-08-06-01.png"> 
+                                <p class="gray small-txt">Not toxic - This plant is safe for children and pets</p>  
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <!-- sunlight_need-->
+                <div class="col-3 my-5"> 
+                    {% if "high" in plant_info.sunlight_need %} 
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/sun/SUN _ PJ _ 2020 _ NEW SIZE-07-08-06-05.png"> 
+                            <p class="gray small-txt">{{ plant_info.sunlight_need }} sunlight level</p>  
+                        </div>  
+                                            
+                    {% elif "medium" in plant_info.sunlight_need%} 
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/sun/HALF SUN _ PJ _ 2020 _ NEW SIZE-07-08-06.png"> 
+                            <p class="gray small-txt">{{ plant_info.sunlight_need }} sunlight level</p> 
+                        </div>
+
+                    {% elif "low" in plant_info.sunlight_need %}
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/sun/HALF SHADOW _ PJ _ 2020 _ NEW SIZE-07.png"> 
+                            <p class="gray small-txt">{{ plant_info.sunlight_need }} sunlight level</p>
+                        </div>   
+                    {% endif %}  
+                </div>
+
+                <!-- water_need-->
+                <div class="col-3 my-5"> 
+                    {% if "high" in plant_info.water_need %} 
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/water/WATER _ 2 _ ICONS _ NEW SIZE _ 2020-02.png"> 
+                            <p class="gray small-txt">{{ plant_info.water_need }} water need</p>  
+                        </div>  
+                                            
+                    {% elif "medium" in plant_info.water_need%} 
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/water/WATER _ 4 _ ICONS _ NEW SIZE _ 2020-02-03-03-04.png"> 
+                            <p class="gray small-txt">{{ plant_info.water_need }} water need</p> 
+                        </div>
+
+                    {% elif "low" in plant_info.water_need %}
+                        <div my-5 mx-5> 
+                            <img class="vector" src="static/images/water/WATER _ 5 _ ICONS _ NEW SIZE _ 2020-02-03-03-05.png"> 
+                            <p class="gray small-txt">{{ plant_info.water_need }} water need</p>
+                        </div>   
+
+                    {% endif %}  
+                </div>
+
+            </div>
+
+            <!-- Recognition results -->
+            <div>
+                <h4>Recognition results</h4>
+                <p>Your plant has been recognized as <b id="pclass"></b> with a confidence level of <b id="conf"></b> &percnt;</p>
+
+            </div>
 
         </div>
+    
+        
+        <!-- TODO Add dynamic plants -->
+        <section class="container-fluid col-md-4 px-0 mx-0 my-0 py-0">
+            <!-- <img src="static/images/SNAKE PLANT _ PJ _ 2020  copy 1.png" class="img-fluid"> -->
+            <img class="vector-2" src="{{ plant_url }}">
+        </section> 
+
     </div>
+  </div>
 
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    </body>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  
+    <!-- JS -->
+    <script>
+        var plant_class = "{{ recognized_plant.plant_class }}";
+        document.getElementById("pclass").innerHTML = plant_class.replace("_", " ");
+        console.log(plant_class);
+      </script>
+  
+      <script>
+        const conf_value = {{ recognized_plant.confidence }};
+        document.getElementById("conf").innerHTML = (conf_value * 100).toFixed(2);
+        console.log(conf_value);
+      </script>  
+  
+      <script>
+        var common_name = "{{ plant_info.common_name }}";
+        document.getElementById("cname").innerHTML = common_name.replace("_", " ");
+        console.log(common_name);
+      </script>  
+  
+      <script>
+        var botanical_name = "{{ plant_info.botanical_name }}";
+        document.getElementById("bname").innerHTML = botanical_name.replace("_", " ");
+        console.log(botanical_name);
+      </script>  
+
+<script>
+    $(function () {
+      $(document).scroll(function(){
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+ </script>
+ 
+</body>
 </html>

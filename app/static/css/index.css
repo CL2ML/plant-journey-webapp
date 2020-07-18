@@ -2,27 +2,32 @@ body{
   font-family: Lato;
 }
 
-/*.navbar{
-  background-color: rgba(0,0,0,0.0);
-}*/
-
 #header {
-          background: url(/images/banner_planta_journey_2020_1.png) center center / cover no-repeat;
+          background: url(../images/banner_planta_journey_2020_1.png) center center / cover no-repeat;
           padding-top: 248px;
           padding-left: 132px;
       }
 
+.navbar{
+    background-color: transparent;
+}
+
 #mainNavbar .nav-link{
-  color: black;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
+    color: #00352B;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
 }
 
 #mainNavbar .nav-link:hover{
-  color: #989c98;
+    border-bottom: 2px solid #CD8E6E;
+    border-radius: 2px;
 }
 
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    transition: background 500ms;
+}
 
 .btn{
   background: #00352B;
@@ -44,6 +49,15 @@ body{
 /*    padding-top: 12px;
   padding-left: 7px;
   padding-right: 7px;*/
+}
+
+.vector {
+  width: 100%;
+  height: 100%;
+}
+
+.block-txt {
+  text-align: justify;
 }
 
 #bottom {

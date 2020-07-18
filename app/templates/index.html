@@ -12,26 +12,28 @@
     <title>Plant Journey</title>
   </head>
   <body>
-    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-transparents navbar-fixed-top">
-        <a class="navbar-brand justify-content-start" href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png') }}" width="228" height="90" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
+      <a class="navbar-brand" href="/">
+        <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">How It Works</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">How It Works</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
-              </li>
-          </ul>
-        </div>
-      </nav> 
+              <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
+            </li>
+        </ul>
+      </div>
+    </nav>
 
     <section id="header" class="jumbotron text-left">
         <h1 style="width: 18rem;">Find your perfect plant</h1>
@@ -41,32 +43,35 @@
 <div id="middle" class="container">
 <div class="row justify-content-between">
   <div class="card border-0 my-5" style="width: 18rem;">
-  <img src="{{ url_for('static', filename='images/plant.png') }}" class="card-img-center">
+  <img src="{{ url_for('static', filename='images/PLANT HOME 1 _ PJ _ 2020.png') }}" class="card-img-center vector">
   <div class="card-body my-5">
-    <p class="card-text">There’s a beautiful plant but you’re not sure what it’s name is and how to take care of it? Take a photo and we will tell you!</p>
+    <p class="card-text block-txt">There’s a beautiful plant but you’re not sure what it’s name is and how to take care of it? Take a photo and we will tell you!</p>
   </div>
 </div>
 
   <div class="card border-0 my-5" style="width: 18rem;">
-  <img src="{{ url_for('static', filename='images/plant.png') }}" class="card-img-center">
+  <img src="{{ url_for('static', filename='images/PLANT HOME 2 _ PJ _ 2020.png') }}" class="card-img-center vector">
   <div class="card-body my-5">
-    <p class="card-text">You also want to know if that plant will surive in your individual home? Answer three short questions and find out!</p>
+    <p class="card-text block-txt">You also want to know if that plants suits your personal lifestyle? Answer three short questions and find out!</p>
 
   </div>
 </div>
 
   <div class="card border-0 my-5" style="width: 18rem;">
-  <img src="{{ url_for('static', filename='images/plant.png') }}" class="card-img-center">
+  <img src="{{ url_for('static', filename='images/PLANT HOME 3 _ PJ _ 2020.png') }}" class="card-img-center vector">
   <div class="card-body my-5">
-    <p class="card-text">Greens in the house can look sso beautiful! Find the ones that suit you the best and scroll through our collection of matching plants for you!</p>
+    <p class="card-text block-txt">You are looking for the perfect plant? Find your perfect plant match and scroll through our collection!</p>
   </div>
 </div>
 
 <div id="bottom" class="container-fluid px-0">
   <div class="row container-fluid">
-    <div id="parttwo" class="col-sm  mr-5 my-5">
-      The original idea for <strong>PlantJourney</strong> comes from Christoph and Sarah. They both love plants, but found themselves over and over in the position to have killed another beautiful innocent house plant. Fortunately, they know how to code and found a great team to develop the idea together. The prototype was developed during the project phase of the Digital Shaper Program by <a href="https://www.techlabs.org/location/berlin/" target="_blank">TechLabs</a>.
-</div>
+    <div id="parttwo" class="col-sm  mr-5 my-5 block-txt">
+      Sarah and Christoph developed the initial idea for <strong>PlantJourney</strong>. They love plants and want to offer them the safest home possible. As beginners, it was not easy for them to get around the wide range of plants and to find easy to understand care instructions. So the idea for PlantJourney was born: a web app that helps plant lovers find the right plant for their personal requirements.
+      The web app was then realized by a motivated team that found each other through the program of <a href="https://www.techlabs.org/location/berlin/" target="_blank">TechLabs Berlin</a>. 
+      You can learn more about the people behind PlantJourney on our <a href="/about">about page</a>. 
+
+    </div>
 
  <div class="col-sm  my-5 d-flex justify-content-center">
    <img src="{{ url_for('static', filename='images/Plant journey H1.png') }}" class="img-fluid" alt="Responsive image">
@@ -94,5 +99,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  
+    <script>
+      $(function () {
+        $(document).scroll(function(){
+          var $nav = $("#mainNavbar");
+          $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+        });
+      });
+   </script>
+  
   </body>
 </html>

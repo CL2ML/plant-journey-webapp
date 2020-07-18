@@ -1,36 +1,56 @@
 body{
     font-family: Lato;
-    min-height: 100%;
 }
 
 html{
-    height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 .navbar{
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 #mainNavbar .nav-link{
-    color: black;
+    color: #00352B;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 19px;
 }
 
 #mainNavbar .nav-link:hover{
-    color: #989c98;
+    border-bottom: 2px solid #CD8E6E;
+    border-radius: 2px;
 }
 
-.col{
-    padding-right: 148px;
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    transition: background 500ms;
+}
+
+#left{
+    margin-top: 70px;
+}
+
+#HeadLeft{
+    height: 30.43%;
+    margin-top: 3.86%;
+}
+
+hr{
+    width: 69px;
+    height: 4px;
+    left: 250px;
+    top: 244px;
+    background: #00352B;
+    border-radius: 2px;
 }
 
 #Match{
-    background: url(/static/images/Pic_Match.jpg);
-    /* background-color: #00352B; */
+    background: url(../images/Pic_Match.jpg);
     background-size: cover;
     background-position: center;
+    height: 1000px;
 }
 
 .btn-primary{
@@ -39,47 +59,53 @@ html{
     border-radius: 59px;
     width: 170px;
     height: 50px;
-    /* left: 48px;
-    top: 144px; */
     font-size: 20px;
-    /* line-height: 27px; */
     color: #F2E8DD;
     border: none;
-    padding-top: 13.12px;
-    padding-bottom: 13.12px;
-    padding-left: 22.03px;
-    padding-right: 22.03px;
-    align-items: center;
-    text-align: center; 
+    margin-top: 15px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
-.btn:hover{
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
     background-color: #989c98;
 }
 
+#submit{
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
 .jumbotron{
-    width: 50%;
-    height: 260px;
+    width: 350px;
+    height: 300px;
     padding-top: 12px;
     padding-left: 17px;
     padding-right: 17px;
     margin-left: 25%;
     margin-right: 25%;
+    border-radius: 26px;
 }
 
 #JumboMatch{
     background: rgba(255, 254, 254, 0.85);
+    margin-top: 58%;
 }
 
 #JumboPic{
     background: none;
     border: 2px solid #00352B;
+    margin-top: 5%;
 }
 
 #add{
     margin-left: 0;
     margin-bottom: 8.12px;
+}
 
+form{
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 h3{
@@ -88,21 +114,7 @@ h3{
     color: #706D6D;
     text-align: center;
     margin-top: 3px;
-}
-
-#camera{
-    background: transparent;
-    font-size:63px;
-    color: #00352B;
-    margin-right: 3%;
-    box-shadow: none;
-    border: none;
-    width: 63px;
-    height: 63px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    margin-left: 129px;
-    margin-right: 129px;
+    margin-bottom: 15px;
 }
 
 #plus{
@@ -113,7 +125,8 @@ h3{
     box-shadow: none;
     width: 63px;
     height: 63px;
-    margin-right: 0px;
+    margin-right: 0%;
+    margin-left: 0%;
 }
 
 .btn-default{
@@ -126,10 +139,13 @@ h3{
 h1{
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 24px;
     color: #00352B;
     text-align: center;
+    margin-top: 5%;
+    margin-left: 20.67%;
+    margin-right: 10.67%
 }
 
 .display-4{
@@ -149,7 +165,6 @@ h1{
 #FitPlant{
     margin-right: 17.5%;
     margin-left: 17.5%;
-    margin-top: 5%;
     width: 65%;
 }
 

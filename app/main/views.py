@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import requests
 import json
 import os
+import pandas as pd
 
 from . import main
 from .. import db # Imports via the init file
@@ -14,13 +15,16 @@ from ..models import Plantspecs, PlantSchema
 plant_schema = PlantSchema()
 plants_schema = PlantSchema(many=True)
 
+
 # Route: Page 1 - Landing Page  ---------------------------------------------#
+
 @main.route('/')
 def index():
 	return render_template('index.html')
 
 
 # Route: Page 2 - Matching options ---------------------------------------------#
+
 def allowed_image(filename):
 	if not "." in filename:
 		return False
@@ -57,8 +61,8 @@ def match():
 					print("Filesize exceeded maximum limit")
 					return redirect(request.url)
 					
-				image = request.files["image"]
-
+				image = request.files["image"]	
+				
 				# Raise exception if no file is selected
 				if image.filename == "":
 					print("No filename")
@@ -67,7 +71,7 @@ def match():
 				print(image.filename)
 				if allowed_image(image.filename):
 					filename = secure_filename(image.filename)
-					print(image)
+					print('Image:', image)
 
 					# Make API call
 					api_base_url = os.getenv('API_BASE_URL')
@@ -87,16 +91,19 @@ def match():
 						print('\n', response_plant.status_code, '\n')
 
 						# decode response
+						#api_results = {'plant_class':'Aloe'}
 						api_results = json.loads(response_plant.text)
 						session["recognized_plant"] = api_results
 						print('Recognition_result:', api_results, '\n')
+
 						print(request.url)
 
-						# TODO: Get matching plant from database
+						# Get matching plant from database
 						recognized_plant_name = session["recognized_plant"]['plant_class']
 						print('Recognized plant name: ', recognized_plant_name)
 						session['plant_info'] = get_db_recognized_plant(recognized_plant_name)
 						print('Plant data from db: ', session['plant_info'])
+
 
 						return redirect(url_for('main.recognition'))
 
@@ -112,36 +119,50 @@ def match():
 
 
 # Route: Page 3 - Recognition results ---------------------------------------------#
+
 @main.route('/recognition')
 def recognition():
 	if "recognized_plant" in session:
-
 		recognized_plant = session["recognized_plant"]
 		print('Session data - recognized_plant:', recognized_plant)
+		print('Session data - plant_info:', session['plant_info'])
 
-		plant_info = session['plant_info']
-		print('Session data - plant_info:', plant_info)	
+		# Load the plant csv into a pandas data frame and filter out the recognized plant
+		df = pd.read_csv('./app/static/images/links/plant_photos_db.csv', header=0)
+		target_plant = df[df['botanical_name'] == recognized_plant['plant_class']]
+		plant_url = target_plant.iloc[0]['final_source']
+		print('plant_url:', plant_url)
 
-		return render_template('recognition.html', recognized_plant=recognized_plant, plant_info=plant_info)
+		return render_template('recognition.html', recognized_plant=session["recognized_plant"], plant_info=session['plant_info'], plant_url=plant_url)
 	else:
 		return redirect(url_for("main.match"))
 
 
 # Route: Page 4 - Matching filter ---------------------------------------------#
+
 @main.route('/filter-plants', methods=['GET','POST'])
 def filter_plants():
 	# Receives user data from the html form
 	if request.method == "POST":
 		session.permanent = True
-
-		session['light_options'] = request.form.get('light_options')
-		print('Session data - light_options:', request.form.get('light_options'))
+		# Save the request data to the session
+		session['light'] = request.form.get('light')
+		print('Session data - light:', request.form.get('light'))
 		
-		session['water_req'] = request.form.get('water_req')
-		print('Session data - water_req:', request.form.get('water_req'))
+		session['water'] = request.form.get('water')
+		print('Session data - water:', request.form.get('water'))
 
-		session['toxic'] = request.form.get('toxic')
-		print('Session data - toxic:', request.form.get('toxic'))
+		session['not_toxic'] = request.form.get('not_toxic')
+		print('Session data - not_toxic:', session['not_toxic'])
+
+		session['kids_toxic'] = request.form.get('kids_toxic')
+		print('Session data - kids_toxic:', session['kids_toxic'])
+
+		session['dogs_toxic'] = request.form.get('dogs_toxic')
+		print('Session data - dogs_toxic:', session['dogs_toxic'])
+
+		session['cats_toxic'] = request.form.get('cats_toxic')
+		print('Session data - cats_toxic:', session['cats_toxic'])
 
 		return redirect(url_for('main.match_results'))
 	
@@ -155,16 +176,23 @@ def filter_plants():
 def get_db_plant_filter(light_options):
 	plant_list = Plantspecs.query.filter_by(sunlight_need=light_options).all()
 	results = plants_schema.dump(plant_list)
+	
 	return results
+
 
 @main.route('/match-results')
 def match_results():
-	# Assign options
-	light_options = session['light_options']
-	water_req = session['water_req']
-	toxic = session['toxic']
+
 	# DB query
-	filtered_plants = get_db_plant_filter(light_options)
+	filtered_plants = get_db_plant_filter(session['light'])
 	print(filtered_plants)
 	
-	return render_template('match_results.html', filtered_plants=filtered_plants, light_options=light_options, water_req=water_req, toxic=toxic)
+	return render_template('match_results.html', 
+		filtered_plants = filtered_plants, 
+		light = session['light'], 
+		water = session['water'], 
+		not_toxic = session['not_toxic'], 
+		kids_toxic = session['kids_toxic'],
+		dogs_toxic = session['dogs_toxic'],
+		cats_toxic = session['cats_toxic']
+		)
