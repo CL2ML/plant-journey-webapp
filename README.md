@@ -1,16 +1,20 @@
 # Prototype for the Plant Journey App
 
-Using the Flask Framework for the Backend.
-## 
+## Purpose
 
+Do you always wanted to find the right plant that suits your individual requirements? Well, we developed a solution.
 
-[PlantJourney App](plantjourney-proto.herokuapp.com)
+Usually, it is not so easy to find a well suited plant and to find easy to understand care instructions. So the idea for PlantJourney was born: a web app that helps plant lovers find the right plant for their personal requirements. The web app was then realized by a motivated team that found each other through the WebDev, Data Science and AI BootCamp of [TechLabs Berlin](https://www.techlabs.org/location/Berlin). 
 
+The prototype for the idea has been built in only six weeky by a group with diverse skill sets.
 
+We encourage you to try out the [PlantJourney App](plantjourney-proto.herokuapp.com) on your own.
 
-## Architecture
+You can meet our team [here](https://plantjourney-proto.herokuapp.com/about). In case you want to get in touch with us, feel free to write us a [mail](plantjourney.app@gmail.com).
 
-PlantJourney Web app <-> Image recognition API server
+## Architecture and dependencies
+
+The app is built on top of two main components: (1) The PlantJourney Web app and (2) an image recognition API server.
 
 __Business logic:__
 
@@ -56,4 +60,3 @@ We would like to give special credits for the following authors and sources acro
 
 This project is licensed under the terms of the Boost Software License 1.0.
 
-If you want to get in touch with us, feel free to write us a [mail](plantjourney.app@gmail.com).
