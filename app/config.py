@@ -8,7 +8,7 @@ class Config:
 	DEBUG = False
 	TESTING = False
 	CSRF_ENABLED = True
-	SECRET_KEY = os.environ.get('SECRET_KEY')
+	SECRET_KEY = os.environ.get('SECRET_KEY') or 'sdfhuethu39efgj!jfjegjh59s'
 	SQLALCHEMY_RECORD_QUERIES = False
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
