@@ -90,10 +90,10 @@ def match():
 					print('Image:', image)
 
 					# Make API call
-					api_base_url = os.getenv('API_BASE_URL')
-					api_pointer = os.getenv('API_POINTER')
-					admin = os.getenv('ADMIN')
-					admin_pw = os.getenv('ADMIN_PW')
+					api_base_url = os.environ.get('API_BASE_URL')
+					api_pointer = os.environ.get('API_POINTER')
+					admin = os.environ.get('ADMIN')
+					admin_pw = os.environ.get('ADMIN_PW')
 					# Put image into a dict
 					my_img = {'image': image}
 
