@@ -19,6 +19,18 @@ plants_schema = PlantSchema(many=True)
 # Links plant pics: Load the plant csv into a pandas data frame and filter out the recognized plant
 plant_pics_urls = pd.read_csv('./app/static/images/links/plant_photos_db.csv', header=0)
 
+# Error handling
+@main.errorhandler(404)
+def page_not_found(error):
+   return render_template('404.html', title = '404'), 404
+
+@main.errorhandler(500)
+def page_not_found(error):
+   return render_template('500.html', title = '500'), 500
+
+@main.errorhandler(403)
+def page_not_found(error):
+   return render_template('403.html', title = '403'), 403
 
 # Route: Page 1 - Landing Page  ---------------------------------------------#
 
@@ -210,3 +222,10 @@ def match_results():
 		cats_toxic = session['cats_toxic'],
 		plant_urls = plant_urls
 		)
+
+
+# Route: About page ---------------------------------------------#
+
+@main.route('/about')
+def about():
+	return render_template('about.html')
