@@ -20,13 +20,12 @@
 }
 
 #header {
-            background: url("static/images/banner_planta_journey_2020_1.png") center center / cover no-repeat;
-              padding-top: 248px;
+  padding-top: 248px;
   padding-left: 132px;
-        }
+}
 
 body {background-color: #EDEDED;
-  }
+}
 
 .container {
    margin-left: auto;

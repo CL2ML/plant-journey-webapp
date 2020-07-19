@@ -1,95 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
-
-  <link rel="stylesheet" type="text/css" href="static/css/match_results.css">
-	<title>Plant Journey</title>
-
-</head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+      
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="static/js/match_results.js"></script>
+      <link rel="stylesheet" type="text/css" href="static/css/match_results.css">
+     
+    <title>Plant Journey</title>
+  </head>
 <body>
 
-			<nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
-				<a class="navbar-brand" href="#">
-				  <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				  <span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				  <ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-					  <a class="nav-link" href="/about">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">How It Works</a>
-					  </li>
-					  <li class="nav-item">
-						<a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
-					  </li>
-				  </ul>
-				</div>
-			  </nav>
+    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
+        <a class="navbar-brand" href="/">
+          <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">How It Works</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
 
-            <div class="container">
-            	<div class="row">
-            		<div class="labeling col-5">
-            			<div class="floatRight">
-	            			<div class="row">
-		            			<h3 class="label">
-		            				Snake <br> Plant
-		            			</h3>
-		            		</div>
-		            		<div class="row alignRight">
-	            				<p class="subLabel" >Sansevieria</p>
-	            			</div>
-	            		</div>
-            		</div>
-            		<div class="col-3 plant">
-            			<img class="center" src="static/images/SNAKE PLANT _ PJ _ 2020 copy 1.png" />
-            		</div>
-            		<div id="imgList" class="col-1">
-            			<div class="row margin">
-	            			<div class="row">
-	            				<img class="vector" src="static/images/toxic/TOXIT _ COLOUR _ PJ _ 2020.png">
-	            			</div>
-	            			<div class="row">
-	            				<img class="vector" src="static/images/sun/HALF SHADOW _ PJ _ 2020 _ NEW SIZE-07.png">
-	            			</div>
-	            			<div class="row">
-	            				<img class="vector" src="static/images/water/WATER _ 5 _ ICONS _ NEW SIZE _ 2020-02-03-03-05.png">
-	            			</div>
-	            		</div>
-	            		<div class="row margin text">
-	            			<p>80% Match</p>
-	            		</div>
-            		</div>
-            		<div class="col-3">
-            		</div>
-            	</div>
-            	<div class="row">
-            		<div class="col-5">
-            		</div>
-            		<div class="col-3" >
-            			<div class="col-4 buttons">
-            				<a><img src="LIKE.png" style="width: 150px;"></a>
-            			</div>
-            			<div class="col-4 buttons">
-            				<a><img src="GO BACK _ PJ _ 2020.png" style="width: 150px;"></a>  
-            			</div>
-            			<div class="col-4 buttons">
-            				<a><img src="DON_T LIKE _ PJ _ 2020.png" style="width: 150px;"></a>
-            			</div>     			
-            			
-            		</div>
-            		<div class="col-4">
-            		</div>
-            	</div>
+    <!-- Main content -->
+    <div class="row mx-center">
+
+        <!-- Empty placeholder -->
+        <div class="col-xs-6 col-md-3">
+        </div>
+
+        <!-- Matching results loop -->
+
+        <div class="col-xs-6 col-md-3 mx-5 my-5">
+
+          {% for plant in filtered_plants %}
+
+            <!-- Cards -->
+            <div class="card" style="width: 25rem;">
+              
+              <!-- Plant pic -->
+              <img class="card-img-top rounded" src="{{ plant_urls[plant.botanical_name] }}">
+              
+              <!-- Plant info -->
+              <div class="card-body">
+                 
+                <div class="details mb-5 float-center" >
+                  
+                  <p class="ml-5 mt-5 float-center">  
+                    <button id="size" name="size" class="btn btn-circle  pull-right btn-circle-sm m-4">
+                      <i class= "fa fa-plus pull-left"></i>
+                    </button> 
+                    <h1><b id="cname">{{ plant.common_name }}</b></h1>
+                  </p>
+                
+                  <p class="subtext">
+                    <b id="bname">{{ plant.botanical_name }}</b>
+                  </p>
+                  
+                  <!-- Button Further infos -->
+                  <div id="sizedetails"  name="sizedetails" class="txt-snippet" style="display: none">
+                    <p class="gray"> This plant originally comes from {{plant.climate_origin}}. 
+                      You should make sure it's standing at a place where it gets {{plant.sunlight_need}} light. 
+                      Best is to water the plant {{plant.watering_frequency}}, because its water need is rather {{plant.water_need}}. 
+                      {% if plant.blossom_color == "no" %}It cannot carry blossoms.
+                      {% else %}It usually carries {{ plant.blossom_color }} blossoms.
+                      {% endif %}
+                      It's recommended to re-pot the plant {{ plant.repotting_need }}.
+                    </p>
+
+
+                    <!-- Caution info-->
+                    {% if plant.toxic == 1 %}
+                    <p><strong style="color: #A66653">Careful</strong></p>
+                    <p class="gray">  
+                    This plant can be toxic for: 
+                        <ul>
+                            {% if plant.children == 1 %}
+                                <li class="gray">children</li>
+                            {% endif %}
+                            
+                            {% if plant.cats == 1 %}
+                                <li class="gray">cats</li>
+                            {% endif %}
+                            
+                            {% if plant.dogs == 1 %}
+                                <li class="gray">dogs</li>
+                            {% endif %}
+                        </ul>
+                    </p>
+                    {% endif %}   
+
+                  </div>
+                
+                </div>  
+            
+                <!-- Icons -->
+                <div class="row">
+                  <!-- toxic -->
+                  {% if plant.toxic == True %}    
+                      <div class="col-3 my-0"> 
+                          <div my-0 mx-5> 
+                              <div >
+                                  <img class="vector" src="static/images/toxic/POISON _ PJ _ 2020 _ NEW SIZE-07-08-06-01-02.png"> 
+                                  <p class="gray small-txt">Toxic</p>  
+                              </div>
+                          </div>
+                      </div>
+                  {% elif plant.toxic == False %}
+                      <div class="col-3 my-0"> 
+                          <div my-0 mx-5> 
+                              <div >
+                                  <img class="vector" src="static/images/toxic/NOT POISON _ PJ _ 2020 _ NEW SIZE-07-08-06-01.png"> 
+                                  <p class="gray small-txt">Not toxic - This plant is safe for children and pets</p>  
+                              </div>
+                          </div>
+                      </div>
+                  {% endif %}
+
+                  <!-- sunlight_need-->
+                  <div class="col-3 my-0"> 
+                      {% if "high" in plant.sunlight_need %} 
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/sun/SUN _ PJ _ 2020 _ NEW SIZE-07-08-06-05.png"> 
+                              <p class="gray small-txt">{{ plant.sunlight_need }} sunlight level</p>  
+                          </div>  
+                                              
+                      {% elif "medium" in plant.sunlight_need%} 
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/sun/HALF SUN _ PJ _ 2020 _ NEW SIZE-07-08-06.png"> 
+                              <p class="gray small-txt">{{ plant.sunlight_need }} sunlight level</p> 
+                          </div>
+
+                      {% elif "low" in plant.sunlight_need %}
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/sun/HALF SHADOW _ PJ _ 2020 _ NEW SIZE-07.png"> 
+                              <p class="gray small-txt">{{ plant.sunlight_need }} sunlight level</p>
+                          </div>   
+                      {% endif %}  
+                  </div>
+
+                  <!-- water_need-->
+                  <div class="col-3 my-0"> 
+                      {% if "high" in plant.water_need %} 
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/water/WATER _ 2 _ ICONS _ NEW SIZE _ 2020-02.png"> 
+                              <p class="gray small-txt">{{ plant.water_need }} water need</p>  
+                          </div>  
+                                              
+                      {% elif "medium" in plant.water_need%} 
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/water/WATER _ 4 _ ICONS _ NEW SIZE _ 2020-02-03-03-04.png"> 
+                              <p class="gray small-txt">{{ plant.water_need }} water need</p> 
+                          </div>
+
+                      {% elif "low" in plant.water_need %}
+                          <div my-0 mx-5> 
+                              <img class="vector" src="static/images/water/WATER _ 5 _ ICONS _ NEW SIZE _ 2020-02-03-03-05.png"> 
+                              <p class="gray small-txt">{{ plant.water_need }} water need</p>
+                          </div>   
+
+                      {% endif %}  
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Margin bottom below cards -->
+            <div class='mb-5'>
             </div>
 
+          {% endfor %} 
+
+        </div>
+        
+        <!-- dynamic plants -->
+        <!-- <section class="container-fluid col-md-4 px-0 mx-0 my-0 py-0">
+          placeholder text 
+          You are looking for a plant that...
+          These are the best matches..
+        </section>  -->
+
+        <!-- Empty placeholder -->
+        <div class=" col-xs-6 col-md-3 mt-5">
+          <h1>Your matches</h1>
+          You are looking for a plant that needs a {{ light }} level of sunlight and which has to be watered {{ water }}.
+          
+          {% if not not_toxic %}
+            As you have 
+
+            {% if kids_toxic %}
+            kids 
+            {% endif %}
+
+            {% if dogs_toxic %}
+            dogs 
+            {% endif %}
+
+            {% if cats_toxic %}
+            cats
+            {% endif %}
+                  
+            at home, the plant should not be toxic for them.
+          
+          {% endif %}
+          
+          {% if not_toxic %}
+            You did not add the requirement, that the plant should not be toxic. 
+          {% endif %}
+          These are the best matches..
+        </div>
+
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+    $(function () {
+      $(document).scroll(function(){
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+ </script>
+
 </body>
-</html>
+

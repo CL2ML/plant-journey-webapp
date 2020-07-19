@@ -16,6 +16,10 @@ plant_schema = PlantSchema()
 plants_schema = PlantSchema(many=True)
 
 
+# Links plant pics: Load the plant csv into a pandas data frame and filter out the recognized plant
+plant_pics_urls = pd.read_csv('./app/static/images/links/plant_photos_db.csv', header=0)
+
+
 # Route: Page 1 - Landing Page  ---------------------------------------------#
 
 @main.route('/')
@@ -126,10 +130,9 @@ def recognition():
 		recognized_plant = session["recognized_plant"]
 		print('Session data - recognized_plant:', recognized_plant)
 		print('Session data - plant_info:', session['plant_info'])
-
-		# Load the plant csv into a pandas data frame and filter out the recognized plant
-		df = pd.read_csv('./app/static/images/links/plant_photos_db.csv', header=0)
-		target_plant = df[df['botanical_name'] == recognized_plant['plant_class']]
+		
+		# Pic for recognized plant
+		target_plant = plant_pics_urls[plant_pics_urls['botanical_name'] == recognized_plant['plant_class']]
 		plant_url = target_plant.iloc[0]['final_source']
 		print('plant_url:', plant_url)
 
@@ -185,7 +188,17 @@ def match_results():
 
 	# DB query
 	filtered_plants = get_db_plant_filter(session['light'])
-	print(filtered_plants)
+	print('filtered_plants:', filtered_plants)
+	
+	# Get all botanical names dict keys
+	plant_list = []
+	for d in filtered_plants:
+		plant_list.append(d['botanical_name'])
+
+	# Pic for recognized plant
+	target_plants = plant_pics_urls[plant_pics_urls['botanical_name'].isin(plant_list)]
+	plant_urls = dict(target_plants.loc[:, ['botanical_name', 'final_source']].values)
+	print('plant_url:', plant_urls)
 	
 	return render_template('match_results.html', 
 		filtered_plants = filtered_plants, 
@@ -194,5 +207,6 @@ def match_results():
 		not_toxic = session['not_toxic'], 
 		kids_toxic = session['kids_toxic'],
 		dogs_toxic = session['dogs_toxic'],
-		cats_toxic = session['cats_toxic']
+		cats_toxic = session['cats_toxic'],
+		plant_urls = plant_urls
 		)
