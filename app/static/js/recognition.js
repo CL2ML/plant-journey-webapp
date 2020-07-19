@@ -34,4 +34,4 @@ $( document ).ready(function() {
 		div.style.display = 'block';
 		}
 	};
-});lementById("timedetails");
+})
