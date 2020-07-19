@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <link rel="stylesheet" type="text/css" href="static/css/about.css">
+
+    <title>Plant Journey</title>
+</head>
+
+<body>
+
+  <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
+    <a class="navbar-brand" href="/">
+      <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">How It Works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="container-fluid d-flex flex-column py-0">
+        <div class="row display:flex team" id="header">
+            <div class="col-m-3 col-l-3 col-xl-3 py-0 header">
+            </div>
+            <div class="col-m-6 py-0 justify-content-start">
+                <h1>MEET THE TEAM</h1>
+            </div>
+            <div class="col-m-3 col-l-3 col-xl-3 py-0">
+            </div>
+        </div>
+        <div class="row display:flex team">
+            <div class="col-3 py-0">
+            </div>
+            <div class="col-m-6 col-xl-6 py-0 px-0">
+                <img src="static/images/Team.jpeg" class="img-fluid" alt="">
+            </div>
+            <div class="col-3 py-0">
+                <img src="static/images/plant drawing _ left_ bigger.png" alt="" class="d-none d-xl-block">
+            </div>
+        </div>
+
+        <div class="row display:flex py-0 team">
+            <div class="col-3 py-0">
+                <img src="static/images/plant drawing _ left_ bigger.png" alt="" class="d-none d-xl-block">
+            </div>
+            <div class="col-m-6 py-0 justify-content-center">
+                <p>If you want to learn more about PlantJourney, send us an <a href="mailto:plantjourney.app@gmail.com" id="email"><strong>email</strong></a>. And don't forget to follow us on <a href="https://www.instagram.com/_plant_journey_/" target="_blank" id="instagram"><strong>Instagram</strong></a>.</p>
+                <p><h2>Christoph Müller
+                    <a href="https://www.linkedin.com/in/cmuellerinfo/" target="_blank" class="btn btn-social-icon btn-linkedin"><span class="fa fa-linkedin"></span></a></h2>
+                <p><strong>#ProjectInitiator #ProjectLead</strong> #ArtificialIntelligence #DataScience #WebDevelopment #Backend #Frontend</p>
+                <p><h2>Sarah Langnese<a href="www.linkedin.com/in/sarah-langnese" target="_blank" class="btn btn-social-icon btn-linkedin"> <span class="fa fa-linkedin"></span></a></h2> 
+                </h2><p><strong>#ProjectInitiator #ProjectLead</strong> #WebDevelopment #Frontend</p>
+                <p><h2>Caroline Michelon<a href="www.linkedin.com/in/caroline-michelon-5a338515a/" target="_blank" class="btn btn-social-icon btn-linkedin"> <span class="fa fa-linkedin"></span></a></h2> 
+                    <p>#UserExperience #UserInterface #Design</p>
+                <p><h2>Tabea Lessing<a href="www.linkedin.com/in/tabea-l-075620164" target="_blank" class="btn btn-social-icon btn-linkedin"> <span class="fa fa-linkedin"></span></a></h2> #UserExperience #UserInterface</p>
+                <p><h2>Marta Chadalska<a href="linkedin.com/in/marta-chadalska/" target="_blank" class="btn btn-social-icon btn-linkedin"> <span class="fa fa-linkedin"></span></a></h2> #WebDevelopment #Frontend</p>
+                <p><h2>Julia Prescher<a href="www.linkedin.com/in/julia-prescher-4a52001b3" target="_blank" class="btn btn-social-icon btn-linkedin"><span class="fa fa-linkedin"></span></a></h2> #DataScience</p>
+                <p><h2>Taliana Herrera</h2> #DataScience</p>
+                <p><h2>Louis Strzebowski</h2> #WebDevelopment </p>
+                <p><h2>Stephan Dittmann</h2> #Mentor #Guide #WebDevelopment #DataScience #ArtificialIntelligence</p>
+            </div>
+            <div class="col-3 py-0">
+            </div>
+            <div class="col-m-3 py-0 plantjourney">
+            </div>
+            <div class="col-l-6 col-xl-6 py-0 px-0 plantjourney">
+                <img src="static/images/plant drawing _ left_ bigger.png" alt="" class="d-none d-xl-block">
+                <div id="plantjourneytext">
+                    <p><h2 id="headplantjourney">About Plant Journey</h2></p>
+                    <p><strong id="SarahChris">Sarah and Christoph</strong> developed the initial idea for PlantJourney. They love plants and want to offer them the safest home possible. As beginners, it was not easy for them to get around the wide range of plants and to find easy to understand care instructions. So the idea for PlantJourney was born: a web app that helps plant lovers find the right plant for their personal requirements.
+                    The web app was then realized by a motivated team that found each other through the program of <a href="https://www.techlabs.org/location/Berlin" target="_blank" id="instagram"><strong>TechLabs Berlin</strong></a>. If you want to stay in touch follow us on <a href="https://www.instagram.com/_plant_journey_/" target="_blank" id="instagram"><strong>Instagram</strong></a>.</p>
+                </div> 
+                <p id="photocredits"><em>The pictures used on this website come from <a href="https://unsplash.com/" target="_blank" id="instagram"><strong>unsplash.com</strong></em></a></p>
+            </div>
+            <div class="col-m-3 py-0 plantjourney">
+            </div>
+
+        </div>
+            
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+      $(document).scroll(function(){
+        var $nav = $("#mainNavbar");
+        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+      });
+    });
+ </script>
+
+
+</body>
+</html>

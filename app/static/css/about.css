@@ -1,0 +1,132 @@
+body{
+    font-family: Lato;
+    font-style: normal;
+    background-color: white;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+.navbar{
+    background-color: transparent;
+}
+
+#mainNavbar .nav-link{
+    color: #00352B;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+#mainNavbar .nav-link:hover{
+    border-bottom: 2px solid #CD8E6E;
+    border-radius: 2px;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    transition: background 500ms;
+}
+
+#navbarSupportedContent{
+    background: rgba(255, 255, 255. 0.9);
+    transition: background 500ms;
+}
+
+#navbarSupportedContent.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#header{
+    margin-top: 100px;
+    margin-bottom: 10px;
+}
+
+h1{
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 53px;
+    /* letter-spacing: 0.1em; */
+    color: #00352B;
+}
+
+h2{
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 25px;
+    color: #00352B;
+    margin-bottom: 3px;
+    margin-top: 0px;
+}
+
+.leaf{
+    background: url(../images/plant drawing _ left_ bigger.png);
+    background-size: cover;
+}
+
+p{
+    margin-top: 0px;
+}
+
+.fa {
+    padding-top: 8px;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 0px;
+    border: none;
+  }
+  
+  .fa:hover {
+    opacity: 0.7;
+  } 
+
+  .fa-linkedin {
+    background: #00352B;
+    color: white;
+  }
+
+  .img-fluid{
+      margin-bottom: 20px;
+  }
+
+  #email{
+      color: #A66653;
+  }
+
+  #instagram{
+    color: #A66653;
+}
+
+#SarahChris{
+    color: #A66653;
+}
+
+.team{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.plantjourney{
+    margin-bottom: 20px;
+}
+
+#plantjourneytext{
+    border: 1px solid #00352B;
+    border-radius: 26px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 40px;
+}
+
+#headplantjourney{
+    color: #A66653;
+}
+
+#photocredits{
+    font-size: 15px;
+}

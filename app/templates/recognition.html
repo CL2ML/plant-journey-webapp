@@ -29,7 +29,7 @@
               <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">How It Works</a>
+                <a class="nav-link" href="/">How It Works</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
@@ -43,7 +43,7 @@
         <div class=" white col-xs-6 col-md-3">
             
             <p class="ml-5 mt-5 float-center">  
-                <button id="size" class="btn btn-circle pull-left btn-circle-sm m-4">
+                <button id="size" class="btn btn-circle pull-left btn-circle-sm m-4 mb-5">
                     <i class= "fa fa-plus pull-left"></i>
                 </button> 
                 <strong>Size</strong>
@@ -55,7 +55,7 @@
                 </p>
             </div>
             
-            <p class="ml-5 mt-5 float-center">  <button id="fragrance" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Fragrance</strong></p>
+            <p class="ml-5 mt-5 float-center">  <button id="fragrance" class="btn btn-circle pull-left btn-circle-sm m-4 mb-5"><i class= "fa fa-plus pull-left"></i></button> <strong>Fragrance</strong></p>
             <div class="details mb-5 float-center">              
                 <p>{{plant_info.fragrance}}</p>
                     <p id="fragrancedetails" style="display: none" class="txt-snippet">
@@ -67,7 +67,7 @@
                     </p>                  
             </div>
             
-            <p class="ml-5 mt-5 float-center">  <button id="time" class="btn btn-circle pull-left btn-circle-sm m-4"><i class= "fa fa-plus pull-left"></i></button> <strong>Best time to plant</strong></p>
+            <p class="ml-5 mt-5 float-center">  <button id="time" class="btn btn-circle pull-left btn-circle-sm m-4 mb-5"><i class= "fa fa-plus pull-left"></i></button> <strong>Best time to plant</strong></p>
             <div class="details mb-5 float-center" class="txt-snippet">
                 {% if plant_info.best_time_to_plant == None %}   
                     <p>No information</p>

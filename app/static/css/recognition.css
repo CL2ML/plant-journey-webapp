@@ -15,8 +15,17 @@
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   transition: background 500ms;
+}
+
+#navbarSupportedContent{
+  background: rgba(255, 255, 255. 0.9);
+  transition: background 500ms;
+}
+
+#navbarSupportedContent.scrolled {
+  background: rgba(255, 255, 255, 0.9);
 }
 
 #header {

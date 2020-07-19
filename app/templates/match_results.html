@@ -15,28 +15,28 @@
   </head>
 <body>
 
-    <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
-        <a class="navbar-brand" href="/">
-          <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">How It Works</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
-              </li>
-          </ul>
-        </div>
-      </nav>
+  <nav id="mainNavbar" class="navbar navbar-light navbar-expand-lg fixed-top py-0">
+    <a class="navbar-brand" href="/">
+      <img src="static/images/PLANTJOURNEY_LOGO_FINAL-04-16-9.png" width="124" height="70" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">How It Works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.match') }}">Start Now</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- Main content -->
     <div class="row mx-center">
@@ -189,21 +189,14 @@
 
         </div>
         
-        <!-- dynamic plants -->
-        <!-- <section class="container-fluid col-md-4 px-0 mx-0 my-0 py-0">
-          placeholder text 
-          You are looking for a plant that...
-          These are the best matches..
-        </section>  -->
-
         <!-- Empty placeholder -->
         <div class=" col-xs-6 col-md-3 mt-5">
           <h1>Your matches</h1>
-          You are looking for a plant that needs a {{ light }} level of sunlight and which has to be watered {{ water }}.
+          You are looking for a plant that needs a <strong>{{ light }}</strong> level of sunlight and which has to be watered <strong>{{ water }}</strong>.
           
           {% if not not_toxic %}
             As you have 
-
+            <strong>
             {% if kids_toxic %}
             kids 
             {% endif %}
@@ -215,15 +208,13 @@
             {% if cats_toxic %}
             cats
             {% endif %}
+          </strong>
                   
             at home, the plant should not be toxic for them.
           
           {% endif %}
           
-          {% if not_toxic %}
-            You did not add the requirement, that the plant should not be toxic. 
-          {% endif %}
-          These are the best matches..
+            Here, you can discover the best matches for your requirements.
         </div>
 
     </div>
@@ -231,14 +222,21 @@
   </div>
 
   <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+  crossorigin="anonymous"></script>
+
   <script>
-    $(function () {
-      $(document).scroll(function(){
-        var $nav = $("#mainNavbar");
-        $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-      });
-    });
- </script>
+  $(function () {
+  $(document).scroll(function(){
+    var $nav = $("#mainNavbar");
+    $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+  });
+  });
+  </script>
 
 </body>
 

@@ -9,24 +9,33 @@ html{
 
 .navbar{
     background-color: transparent;
-}
-
-#mainNavbar .nav-link{
+  }
+  
+  #mainNavbar .nav-link{
     color: #00352B;
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-}
-
-#mainNavbar .nav-link:hover{
+  }
+  
+  #mainNavbar .nav-link:hover{
     border-bottom: 2px solid #CD8E6E;
     border-radius: 2px;
-}
-
-.navbar.scrolled {
-    background: rgba(255, 255, 255, 0.8);
+  }
+  
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.9);
     transition: background 500ms;
-}
+  }
+  
+  #navbarSupportedContent{
+    background: rgba(255, 255, 255. 0.9);
+    transition: background 500ms;
+  }
+  
+  #navbarSupportedContent.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+  }
 
 #left{
     margin-top: 70px;

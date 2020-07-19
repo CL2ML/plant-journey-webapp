@@ -9,24 +9,34 @@ body{
       }
 
 .navbar{
-    background-color: transparent;
+  background-color: transparent;
 }
 
 #mainNavbar .nav-link{
-    color: #00352B;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
+  color: #00352B;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 #mainNavbar .nav-link:hover{
-    border-bottom: 2px solid #CD8E6E;
-    border-radius: 2px;
+  border-bottom: 2px solid #CD8E6E;
+  border-radius: 2px;
 }
 
 .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.8);
-    transition: background 500ms;
+  background: rgba(255, 255, 255, 0.9);
+  transition: background 500ms;
+}
+
+#navbarSupportedContent{
+  background: rgba(255, 255, 255. 0.9);
+  transition: background 500ms;
+}
+
+#navbarSupportedContent.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+
 }
 
 .btn{
@@ -75,3 +85,9 @@ background-color: #f0f0f0;
 background-color: #00352B;
 color: #F2E8DD;
       }
+
+.fa {
+  margin-left: 20px;
+  font-size: 40px;
+  color: white;
+}
